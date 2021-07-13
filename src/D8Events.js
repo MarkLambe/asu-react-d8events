@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import moment from 'moment';
 import './D8Events.css';
 import {validDate, formatTime} from './D8Utils'
 
