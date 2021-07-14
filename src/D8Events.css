@@ -1,15 +1,15 @@
 .d8EventRow {
-  border: .05rem solid #d7d7d7;
+  border: 0.05rem solid #d7d7d7;
   margin-bottom: 1rem;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .d8EventDateContainer {
   background-color: #2a2a2a;
   width: 100%;
   float: left;
-  padding-top: .5rem;
-  padding-bottom: .5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .d8EventDateNumber {
@@ -19,13 +19,13 @@
   width: 40px;
   float: left;
   margin-right: 1rem;
-  margin-left: .7rem;
+  margin-left: 0.7rem;
 }
 
 .d8EventImageContainer {
   padding: 0 !important;
-  margin:0;
-  border-right: 7px solid #FFC627;
+  margin: 0;
+  border-right: 7px solid #ffc627;
   height: 332px;
 }
 /*.d8EventYellowBorder {
@@ -34,7 +34,7 @@
   background-color: #FFC627;
 }*/
 
-.d8EventYellowBorder .col-sm-1 .col-md-3{
+.d8EventYellowBorder .col-sm-1 .col-md-3 {
   width: 3%;
 }
 
@@ -62,7 +62,7 @@
   width: 100%;
   float: left;
   text-align: left;
-  letter-spacing: .1rem;
+  letter-spacing: 0.1rem;
   font-weight: bold;
 }
 
@@ -74,17 +74,17 @@
 
 .d8EventMonth {
   color: #fff;
-  font-size: .8rem;
+  font-size: 0.8rem;
   width: 100%;
   float: left;
   text-align: left;
-  line-height: .8em;
+  line-height: 0.8em;
 }
 
 .d8EventImage {
   padding: 0;
   margin: 0;
-  height: 100%;
+  height: 100% !important;
   width: 100%;
   object-fit: cover;
 }
@@ -124,30 +124,30 @@
 }
 .d8EventDateContainer::after {
   content: " ";
-  clear:both;
-  display:block;
+  clear: both;
+  display: block;
 }
 .eventItemCard .d8EventDateContainer {
-  float:none;
+  float: none;
 }
 .eventItemCard .d8EventDetailsContainer {
-  padding:.5rem;
+  padding: 0.5rem;
 }
 .eventItemCard .d8EventImage {
-  padding:0;
+  padding: 0;
 }
 .eventItemCard .d8EventImageTop a {
-  display:block;
-  height:100%;
+  display: block;
+  height: 100%;
 }
 .eventItemCard .d8EventImageTop img {
   object-fit: cover;
   min-height: 100%;
-  min-width:100%;
+  min-width: 100%;
 }
 
 .d8EventImageTop-wrapper {
-  border-bottom: 7px solid #FFC627;
+  border-bottom: 7px solid #ffc627;
 }
 
 .d8LocationThreeCards {
@@ -156,38 +156,38 @@
 }
 
 .eventItemCard .d8EventImageTop-wrapper {
-  position:relative;
-  height:0;
-  padding-top:56%;
-  overflow:hidden;
+  position: relative;
+  height: 0;
+  padding-top: 56% !important;
+  overflow: hidden;
 }
 .eventItemCard .d8EventImageTop {
-  position:absolute;
-  top:0;
-  height:100%;
+  position: absolute;
+  top: 0;
+  height: 100%;
 }
 .eventItemCard .d8EventTitle a {
-    font-size: 1.1rem;
-    font-weight: bold;
+  font-size: 1.1rem;
+  font-weight: bold;
 }
 .eventItemCard .d8EventDetails {
-    font-size: 1rem;
-    margin-bottom:0;
+  font-size: 1rem;
+  margin-bottom: 0;
 }
 .eventItemCard .d8EventTitle {
-  margin-bottom:.5rem;
-  padding: .5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
 }
 .eventItemCard .card {
-  height:100%;
+  height: 100%;
 }
 .eventItemCard {
-  margin-bottom:20px;
+  margin-bottom: 20px;
 }
 
 @media (max-width: 575px) {
   .d8EventImageContainer {
-    border-bottom: 7px solid #FFC627;
+    border-bottom: 7px solid #ffc627;
     border-right: 0;
   }
 }
