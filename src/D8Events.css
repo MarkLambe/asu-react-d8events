@@ -160,6 +160,7 @@
   height: 0;
   padding-top: 56% !important;
   overflow: hidden;
+  flex-grow: unset !important;
 }
 .eventItemCard .d8EventImageTop {
   position: absolute;
