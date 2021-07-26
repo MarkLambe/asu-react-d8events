@@ -3,3 +3,15 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+button,
+a {
+  text-decoration: none;
+}
+
+button:focus,
+a:focus {
+  border-radius: 1px;
+  outline: none !important;
+  box-shadow: 0px 0px 0px 2px #ffffff, 0px 0px 0px 4px #191919 !important;
+}
