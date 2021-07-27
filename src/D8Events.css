@@ -28,6 +28,11 @@
   border-right: 7px solid #ffc627;
   height: 332px;
 }
+
+.d8EventImageContainer a {
+  display: block;
+  height: 100%;
+}
 /*.d8EventYellowBorder {
   height: inherit;
   padding: 0;
