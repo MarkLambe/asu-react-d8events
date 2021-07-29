@@ -5,7 +5,6 @@ import { validDate, formatTime } from "./D8Utils";
 
 class EventItemDefault extends Component {
   render() {
-    console.log(this.props.listNode);
     return (
       <div className="row d8EventRow">
         {/*<div className="d8EventDateContainer">
@@ -53,25 +52,43 @@ class EventItemDefault extends Component {
             </a>
           </p>
           <div className="row">
-            <div className="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 d8StartAndEnd">
+            <div className="col-6 dateTime">
               <span>
-                {validDate(this.props.listNode.very_start_date, "dddd")},{" "}
+                <span class="far icon-small fa-calendar location-icon" title="Address Icon"></span>
               </span>
               <span>
-                {validDate(this.props.listNode.very_start_date, "MMMM")}&nbsp;
+                <div class="alignTextWithIcon">
+                  <span>
+                    {validDate(this.props.listNode.very_start_date, "dddd")},&nbsp;
+                  </span>
+                  <span>
+                    {validDate(this.props.listNode.very_start_date, "MMMM")}&nbsp;
+                  </span>
+                  <span>
+                    {validDate(this.props.listNode.very_start_date, "D")}
+                  </span>
+                </div>
+                <div>
+                  <p>
+                    {formatTime(
+                      this.props.listNode.very_start_date,
+                      this.props.listNode.very_end_date
+                    )}
+                  </p>
+                </div>
               </span>
-              <span>{validDate(this.props.listNode.very_start_date, "D")}</span>
-              <p>
-                {formatTime(
-                  this.props.listNode.full_start_date,
-                  this.props.listNode.full_end_date
-                )}
-              </p>
             </div>
-            <div className="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-              <div className="d8Location">{this.props.listNode.campus}</div>
+            <div className="col-6 d8Location">
+              <span class="fas icon-small fa-map-marker-alt location-icon" title="Address Icon"></span>
+              <span class="alignTextWithIcon">{this.props.listNode.campus}</span>
             </div>
           </div>
+          <div className="row">
+            <div className="col-6">
+              <a href={this.props.listNode.ticketing_rsvp_url} target="_blank">{this.props.listNode.ticketing_rsvp_txt}</a>
+            </div>
+          </div>
+
         </div>
       </div>
     );
@@ -103,14 +120,6 @@ class EventItemCard extends Component {
             </a>
           )}
 
-          {/*<div className="d8EventDateContainer">
-          <span className="d8EventDateNumber">{validDate(this.props.listNode.very_start_date, 'D')}</span>
-          <div className="d8DayOfWeekMonthContainer">
-            <span className="d8EventDayOfWeek">{validDate(this.props.listNode.very_start_date, 'dddd')}</span>
-            <span className="d8EventMonth">{validDate(this.props.listNode.very_start_date, 'MMMM')}</span>
-          </div>
-    </div>*/}
-
           <div className="d8EventDetailsContainer">
             <p className="d8EventTitle">
               <a
@@ -139,8 +148,8 @@ class EventItemCard extends Component {
                   </span>
                   <div>
                     {formatTime(
-                      this.props.listNode.full_start_date,
-                      this.props.listNode.full_end_date
+                      this.props.listNode.very_start_date,
+                      this.props.listNode.very_end_date
                     )}
                   </div>
                 </div>
@@ -252,12 +261,10 @@ class D8Events extends Component {
         displayNot: feedTagsNot,
       });
 
-      console.log(this.state);
     });
   }
 
   render() {
-    // console.log(this.state.displayData);
     var results = this.state.displayData.map((thisNode) => ({
       nid: thisNode.node.nid,
       title: thisNode.node.title,
@@ -268,14 +275,10 @@ class D8Events extends Component {
       very_start_date: thisNode.node.very_start_date,
       very_end_date: thisNode.node.very_end_date,
       alias: thisNode.node.alias,
+      ticketing_rsvp_url: thisNode.node.ticketing_rsvp_url,
+      ticketing_rsvp_txt: thisNode.node.ticketing_rsvp_txt,
     }));
-    console.log(results[0]);
-    console.log(results[1]);
-    console.log(results[2]);
 
-    // need 2018-07-07T19%3A30
-    // have 2018-07-07
-    // very_start_date: "2018-07-07T19:30:00Z",
 
     switch (this.state.displayStyle) {
       case "Three":

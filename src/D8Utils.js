@@ -25,7 +25,7 @@ export const formatTime = (startTime, endTime) => {
     return startTime;
   }
   else {
-    return startTime.slice(13) + " - " + endTime.slice(13);
+    return startTime.slice(11, 16) + " - " + endTime.slice(11, 16);
   }
 }
 
