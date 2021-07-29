@@ -54,6 +54,10 @@
   align-items: center;
 }
 
+.dateTime {
+  display: flex;
+}
+
 .d8StartAndEndEventCard {
   padding-left: 24px;
   font-size: 13px;
@@ -75,10 +79,13 @@
 
 .d8Location {
   font-size: 13px;
-  text-align: center;
   padding-right: 125px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+}
+
+.alignTextWithIcon {
+ padding-top: 4px;
 }
 
 .location-icon {
@@ -103,6 +110,7 @@
 }
 
 .d8EventDetailsContainer {
+  font-size: 13px;
   padding: 3rem 1rem;
 }
 
