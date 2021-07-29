@@ -50,6 +50,8 @@
 .d8StartAndEnd {
   padding-left: 30px;
   font-size: 13px;
+  display: flex;
+  align-items: center;
 }
 
 .d8StartAndEndEventCard {
@@ -75,6 +77,12 @@
   font-size: 13px;
   text-align: center;
   padding-right: 125px;
+  display: flex;
+  align-items: center;
+}
+
+.location-icon {
+  padding-right: 10px;
 }
 
 .d8EventMonth {

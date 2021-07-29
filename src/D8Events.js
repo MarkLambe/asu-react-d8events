@@ -54,6 +54,7 @@ class EventItemDefault extends Component {
           </p>
           <div className="row">
             <div className="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 d8StartAndEnd">
+              <span class="far icon-small fa-calendar location-icon" title="Address Icon"></span>
               <span>
                 {validDate(this.props.listNode.very_start_date, "dddd")},{" "}
               </span>
@@ -69,6 +70,7 @@ class EventItemDefault extends Component {
               </p>
             </div>
             <div className="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+              <span class="fas icon-small fa-map-marker-alt location-icon" title="Address Icon"></span>
               <div className="d8Location">{this.props.listNode.campus}</div>
             </div>
           </div>
