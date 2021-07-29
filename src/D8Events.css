@@ -47,13 +47,6 @@
   float: left;
 }
 
-.d8StartAndEnd {
-  padding-left: 30px;
-  font-size: 13px;
-  display: flex;
-  align-items: center;
-}
-
 .dateTime {
   display: flex;
 }

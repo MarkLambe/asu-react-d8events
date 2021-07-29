@@ -89,56 +89,6 @@ class EventItemDefault extends Component {
             </div>
           </div>
 
-
-
-
-
-
-
-{/*
-          <div className="row">
-            <div className="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-              <div class="d8StartAndEnd">
-                <span class="far icon-small fa-calendar location-icon" title="Address Icon"></span>
-                <span>
-                  {validDate(this.props.listNode.very_start_date, "dddd")},&nbsp;
-                </span>
-                <span>
-                  {validDate(this.props.listNode.very_start_date, "MMMM")}&nbsp;
-                </span>
-                <span>
-                  {validDate(this.props.listNode.very_start_date, "D")}
-                </span>
-              </div>
-              <div class="d8StartAndEnd padWithoutIcons">
-                <p>
-                  {formatTime(
-                    this.props.listNode.very_start_date,
-                    this.props.listNode.very_end_date
-                  )}
-                </p>
-              </div>
-            </div>
-            <div className="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 d8Location">
-              <span class="fas icon-small fa-map-marker-alt location-icon" title="Address Icon"></span>
-              <span>{this.props.listNode.campus}</span>
-            </div>
-          </div>
-          <div className="row mt-5">
-            <div className="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 d8StartAndEnd">
-              <a href={this.props.listNode.ticketing_rsvp_url} target="_blank">{this.props.listNode.ticketing_rsvp_txt}</a>
-            </div>
-          </div>
-
-                  */}
-
-
-
-
-
-
-
-
         </div>
       </div>
     );
@@ -169,14 +119,6 @@ class EventItemCard extends Component {
               </div>
             </a>
           )}
-
-          {/*<div className="d8EventDateContainer">
-          <span className="d8EventDateNumber">{validDate(this.props.listNode.very_start_date, 'D')}</span>
-          <div className="d8DayOfWeekMonthContainer">
-            <span className="d8EventDayOfWeek">{validDate(this.props.listNode.very_start_date, 'dddd')}</span>
-            <span className="d8EventMonth">{validDate(this.props.listNode.very_start_date, 'MMMM')}</span>
-          </div>
-    </div>*/}
 
           <div className="d8EventDetailsContainer">
             <p className="d8EventTitle">
