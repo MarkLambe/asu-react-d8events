@@ -206,15 +206,11 @@
 }
 
 @media (max-width: 767px) {
-  .threeCardsContainer {
-    padding-left: 12px;
-    padding-right: 12px;
-  }
   .d8EventRow {
     margin: 0 8px 1rem 8px !important;
   }
   .eventItemCard {
-    padding: 0 20px !important;
+    padding: 0 32px !important;
   }
 }
 
