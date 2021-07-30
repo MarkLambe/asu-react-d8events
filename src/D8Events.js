@@ -54,15 +54,20 @@ class EventItemDefault extends Component {
           <div className="row">
             <div className="col-6 dateTime">
               <span>
-                <span class="far icon-small fa-calendar location-icon" title="Address Icon"></span>
+                <span
+                  class="far icon-small fa-calendar location-icon"
+                  title="Address Icon"
+                ></span>
               </span>
               <span>
                 <div class="alignTextWithIcon">
                   <span>
-                    {validDate(this.props.listNode.very_start_date, "dddd")},&nbsp;
+                    {validDate(this.props.listNode.very_start_date, "dddd")}
+                    ,&nbsp;
                   </span>
                   <span>
-                    {validDate(this.props.listNode.very_start_date, "MMMM")}&nbsp;
+                    {validDate(this.props.listNode.very_start_date, "MMMM")}
+                    &nbsp;
                   </span>
                   <span>
                     {validDate(this.props.listNode.very_start_date, "D")}
@@ -79,16 +84,22 @@ class EventItemDefault extends Component {
               </span>
             </div>
             <div className="col-6 d8Location">
-              <span class="fas icon-small fa-map-marker-alt location-icon" title="Address Icon"></span>
-              <span class="alignTextWithIcon">{this.props.listNode.campus}</span>
+              <span
+                class="fas icon-small fa-map-marker-alt location-icon"
+                title="Address Icon"
+              ></span>
+              <span class="alignTextWithIcon">
+                {this.props.listNode.campus}
+              </span>
             </div>
           </div>
           <div className="row">
             <div className="col-6">
-              <a href={this.props.listNode.ticketing_rsvp_url} target="_blank">{this.props.listNode.ticketing_rsvp_txt}</a>
+              <a href={this.props.listNode.ticketing_rsvp_url} target="_blank">
+                {this.props.listNode.ticketing_rsvp_txt}
+              </a>
             </div>
           </div>
-
         </div>
       </div>
     );
@@ -260,7 +271,6 @@ class D8Events extends Component {
         displayStyle: feedStyle,
         displayNot: feedTagsNot,
       });
-
     });
   }
 
@@ -279,7 +289,6 @@ class D8Events extends Component {
       ticketing_rsvp_txt: thisNode.node.ticketing_rsvp_txt,
     }));
 
-
     switch (this.state.displayStyle) {
       case "Three":
         return (
@@ -297,7 +306,7 @@ class D8Events extends Component {
 
       case "ThreeCards":
         return (
-          <div className="container">
+          <div className="container threeCardsContainer">
             <div className="row">
               {results.slice(0, 3).map((listNode, index) => {
                 return (

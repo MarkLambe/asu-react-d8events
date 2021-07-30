@@ -1,3 +1,7 @@
+.threeCardsContainer {
+  padding: 0 !important;
+}
+
 .d8EventRow {
   border: 0.05rem solid #d7d7d7;
   margin-bottom: 1rem;
@@ -78,7 +82,7 @@
 }
 
 .alignTextWithIcon {
- padding-top: 4px;
+  padding-top: 4px;
 }
 
 .location-icon {
@@ -199,6 +203,19 @@
 }
 .eventItemCard {
   margin-bottom: 20px;
+}
+
+@media (max-width: 767px) {
+  .threeCardsContainer {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .d8EventRow {
+    margin: 0 8px 1rem 8px !important;
+  }
+  .eventItemCard {
+    padding: 0 20px !important;
+  }
 }
 
 @media (max-width: 575px) {
