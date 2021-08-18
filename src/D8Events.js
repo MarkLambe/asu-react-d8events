@@ -25,7 +25,6 @@ class EventItemDefault extends Component {
                 this.props.listNode.very_start_date,
                 "YYYY-MM-DD"
               )}`}
-              target="_blank"
             >
               <img
                 src={this.props.listNode.image_url}
@@ -46,7 +45,6 @@ class EventItemDefault extends Component {
                 this.props.listNode.very_start_date,
                 "YYYY-MM-DD"
               )}`}
-              target="_blank"
             >
               {this.props.listNode.title}
             </a>
@@ -83,19 +81,24 @@ class EventItemDefault extends Component {
                 </div>
               </span>
             </div>
-            <div className="col-6 d8Location">
-              <span
-                class="fas icon-small fa-map-marker-alt location-icon"
-                title="Address Icon"
-              ></span>
-              <span class="alignTextWithIcon">
-                {this.props.listNode.campus}
-              </span>
-            </div>
+            {this.props.listNode.campus && (
+              <div className="col-6 d8Location">
+                <span
+                  class="fas icon-small fa-map-marker-alt location-icon"
+                  title="Address Icon"
+                ></span>
+                <span class="alignTextWithIcon">
+                  {this.props.listNode.campus}
+                </span>
+              </div>
+            )}
           </div>
           <div className="row">
             <div className="col-6">
-              <a href={this.props.listNode.ticketing_rsvp_url} target="_blank">
+              <a
+                href={this.props.listNode.ticketing_rsvp_url}
+                className="register-link"
+              >
                 {this.props.listNode.ticketing_rsvp_txt}
               </a>
             </div>
@@ -117,7 +120,6 @@ class EventItemCard extends Component {
                 this.props.listNode.very_start_date,
                 "YYYY-MM-DD"
               )}`}
-              target="_blank"
             >
               <div className="d8EventImageTop-wrapper">
                 <div className="d8EventImageTop">
@@ -138,7 +140,6 @@ class EventItemCard extends Component {
                   this.props.listNode.very_start_date,
                   "YYYY-MM-DD"
                 )}`}
-                target="_blank"
               >
                 {this.props.listNode.title}
               </a>
@@ -165,12 +166,14 @@ class EventItemCard extends Component {
                   </div>
                 </div>
               </div>
-              <div className="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                <i className="fas fa-map-marker-alt"></i>
-                <div className="d8LocationThreeCards">
-                  {this.props.listNode.campus}
+              {this.props.listNode.campus && (
+                <div className="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                  <i className="fas fa-map-marker-alt"></i>
+                  <div className="d8LocationThreeCards">
+                    {this.props.listNode.campus}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
