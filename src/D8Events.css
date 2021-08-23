@@ -2,6 +2,25 @@
   padding: 0 !important;
 }
 
+.d8EventListHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 8px 1rem 8px;
+}
+
+@media screen and (min-width: 768px) {
+  .d8EventListHeader {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+}
+
+.d8MoreButton {
+  display: inline-block;
+  height: fit-content;
+}
+
 .d8EventRow {
   border: 0.05rem solid #d7d7d7;
   margin-bottom: 1rem;

@@ -1,10 +1,12 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import axios from "axios";
 import "./D8Events.css";
 import { validDate, formatTime } from "./D8Utils";
 
 class EventItemDefault extends Component {
   render() {
+    const campus = (this.props.listNode.campus || "").trim();
+
     return (
       <div className="row d8EventRow">
         {/*<div className="d8EventDateContainer">
@@ -81,15 +83,13 @@ class EventItemDefault extends Component {
                 </div>
               </span>
             </div>
-            {this.props.listNode.campus && (
+            {campus && (
               <div className="col-6 d8Location">
                 <span
                   class="fas icon-small fa-map-marker-alt location-icon"
                   title="Address Icon"
                 ></span>
-                <span class="alignTextWithIcon">
-                  {this.props.listNode.campus}
-                </span>
+                <span class="alignTextWithIcon">{campus}</span>
               </div>
             )}
           </div>
@@ -111,6 +111,7 @@ class EventItemDefault extends Component {
 
 class EventItemCard extends Component {
   render() {
+    const campus = (this.props.listNode.campus || "").trim();
     return (
       <div className="col col-12 col-lg-4 eventItemCard">
         <div className="card card-event">
@@ -166,12 +167,10 @@ class EventItemCard extends Component {
                   </div>
                 </div>
               </div>
-              {this.props.listNode.campus && (
+              {campus && (
                 <div className="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                   <i className="fas fa-map-marker-alt"></i>
-                  <div className="d8LocationThreeCards">
-                    {this.props.listNode.campus}
-                  </div>
+                  <div className="d8LocationThreeCards">{campus}</div>
                 </div>
               )}
             </div>
@@ -292,50 +291,57 @@ class D8Events extends Component {
       ticketing_rsvp_txt: thisNode.node.ticketing_rsvp_txt,
     }));
 
-    switch (this.state.displayStyle) {
+    const { displayStyle } = this.state;
+    const {
+      moreButtonLabel,
+      moreButtonUrl,
+      title = "Events",
+    } = this.props.dataFromPage;
+
+    const linkUrl = moreButtonUrl;
+    const buttonLabel = moreButtonLabel || "More events";
+
+    let eventList = results;
+    let classes = "";
+    let EventComponet = EventItemDefault;
+
+    switch (displayStyle) {
       case "Three":
-        return (
-          <div className="container">
-            {results.slice(0, 3).map((listNode, index) => {
-              return (
-                <React.Fragment key={index}>
-                  <EventItemDefault listNode={listNode} />
-                </React.Fragment>
-              );
-            })}
-          </div>
-        );
+        eventList = results.slice(0, 3);
+        EventComponet = EventItemDefault;
         break;
 
       case "ThreeCards":
-        return (
-          <div className="container threeCardsContainer">
-            <div className="row">
-              {results.slice(0, 3).map((listNode, index) => {
-                return (
-                  <React.Fragment key={index}>
-                    <EventItemCard listNode={listNode} />
-                  </React.Fragment>
-                );
-              })}
-            </div>
-          </div>
-        );
+        eventList = results.slice(0, 3);
+        classes = "threeCardsContainer";
+        EventComponet = EventItemCard;
         break;
-
-      default:
-        return (
-          <div className="container">
-            {results.map((listNode, index) => {
-              return (
-                <React.Fragment key={index}>
-                  <EventItemDefault listNode={listNode} />
-                </React.Fragment>
-              );
-            })}
-          </div>
-        );
     }
+
+    return (
+      <div className="container">
+        <header className="d8EventListHeader">
+          <h2>{title}</h2>
+          <a
+            tabIndex={0}
+            className="btn btn-gold d8MoreButton"
+            role="button"
+            href={linkUrl}
+          >
+            {buttonLabel}
+          </a>
+        </header>
+        <section>
+          {eventList.map((listNode, index) => {
+            return (
+              <Fragment key={index}>
+                <EventComponet listNode={{ ...listNode, campus: "" }} />
+              </Fragment>
+            );
+          })}
+        </section>
+      </div>
+    );
   }
 }
 
