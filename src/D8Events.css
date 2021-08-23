@@ -75,7 +75,7 @@
 }
 
 .d8Location {
-  font-size: 13px;
+  font-size: 14px;
   padding-right: 125px;
   display: flex;
   align-items: flex-start;
@@ -86,6 +86,7 @@
 }
 
 .location-icon {
+  width: 1.4rem !important;
   padding-right: 10px;
 }
 
@@ -107,7 +108,7 @@
 }
 
 .d8EventDetailsContainer {
-  font-size: 13px;
+  font-size: 14px;
   padding: 3rem 1rem;
 }
 
@@ -120,9 +121,10 @@
   color: #2a2a2a;
   font-weight: bold;
   margin-bottom: 1rem;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   text-decoration: none;
-  line-height: 1;
+  letter-spacing: -0.0525rem;
+  line-height: 1.75rem;
 }
 
 .d8EventTitle a:hover {
@@ -150,6 +152,10 @@
 }
 .eventItemCard .d8EventDetailsContainer {
   padding: 0.5rem;
+}
+.d8EventDetailsContainer .register-link {
+  font-size: 1rem;
+  text-decoration: underline;
 }
 .eventItemCard .d8EventImage {
   padding: 0;
