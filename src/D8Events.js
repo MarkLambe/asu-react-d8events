@@ -298,11 +298,13 @@ class D8Events extends Component {
       title = "Events",
     } = this.props.dataFromPage;
 
-    const linkUrl = moreButtonUrl;
-    const buttonLabel = moreButtonLabel || "More events";
+    const linkUrl =
+      moreButtonUrl || "https://dev-final-stable-release.ws.asu.edu/";
+    const buttonLabel = moreButtonLabel || "More stories and videos";
 
     let eventList = results;
-    let classes = "";
+    let containerClasses = "";
+    let headerClasses = "";
     let EventComponet = EventItemDefault;
 
     switch (displayStyle) {
@@ -313,14 +315,15 @@ class D8Events extends Component {
 
       case "ThreeCards":
         eventList = results.slice(0, 3);
-        classes = "threeCardsContainer";
+        containerClasses = "threeCardsContainer";
+        headerClasses = "col-4";
         EventComponet = EventItemCard;
         break;
     }
 
     return (
-      <div className="container">
-        <header className="d8EventListHeader">
+      <div className={"container " + containerClasses}>
+        <header className={"d8EventListHeader " + headerClasses}>
           <h2>{title}</h2>
           <a
             tabIndex={0}
