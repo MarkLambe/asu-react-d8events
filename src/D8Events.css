@@ -46,7 +46,8 @@
   padding: 0 !important;
   border-right: 7px solid #ffc627;
   height: 235px;
-  width: 235px;
+  width: 235px !important;
+  max-width: 235px !important;
 }
 
 .d8EventImageContainer a {

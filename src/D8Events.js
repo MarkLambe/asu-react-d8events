@@ -160,6 +160,14 @@ class EventItemCard extends Component {
                   <div className="d8LocationThreeCards">{campus}</div>
                 </div>
               )}
+              <div className="col-12 mt-2">
+                <a
+                  href={this.props.listNode.ticketing_rsvp_url}
+                  className="register-link px-1"
+                >
+                  {this.props.listNode.ticketing_rsvp_txt}
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -313,7 +321,8 @@ class D8Events extends Component {
 
     return (
       <div className={"container " + containerClasses}>
-        <div className={`col d8EventListHeader ${headerClasses}`}>
+        {/* Uncomment after release */}
+        {/* <div className={`col d8EventListHeader ${headerClasses}`}>
           <h2>{title}</h2>
           <a
             className={`btn btn-${buttonColor} d8MoreButton`}
@@ -322,7 +331,7 @@ class D8Events extends Component {
           >
             {buttonLabel}
           </a>
-        </div>
+        </div> */}
         <div className="contentContainer">
           {eventList.map((listNode, index) => {
             return (
