@@ -9,17 +9,6 @@ class EventItemDefault extends Component {
 
     return (
       <div className="row d8EventRow">
-        {/*<div className="d8EventDateContainer">
-
-          <span className="d8EventDateNumber">{validDate(this.props.listNode.very_start_date, 'D')}</span>
-
-          <div className="d8DayOfWeekMonthContainer">
-            <span className="d8EventDayOfWeek">{validDate(this.props.listNode.very_start_date, 'dddd')}</span>
-            <span className="d8EventMonth">{validDate(this.props.listNode.very_start_date, 'MMMM')}</span>
-          </div>
-
-    </div>*/}
-
         <div className="col-12 col-sm-3 col-md-5 col-lg-3 col-xl-3 d8EventImageContainer">
           {this.props.listNode.image_url !== "" && (
             <a
@@ -36,9 +25,6 @@ class EventItemDefault extends Component {
             </a>
           )}
         </div>
-        {/*this.props.listNode.campus
-          <p>{formatTime(validDate(this.props.listNode.very_start_date,'h:mm'), validDate(this.props.listNode.very_end_date,'h:mm'))}</p>
-        */}
 
         <div className="col-12 col-sm-9 col-md-7 col-lg-9 col-xl-9 d8EventDetailsContainer">
           <p className="d8EventTitle">
@@ -83,7 +69,7 @@ class EventItemDefault extends Component {
                 </div>
               </span>
             </div>
-            {campus && (
+            {!!campus && (
               <div className="col-6 d8Location">
                 <span
                   class="fas icon-small fa-map-marker-alt location-icon"
@@ -112,6 +98,7 @@ class EventItemDefault extends Component {
 class EventItemCard extends Component {
   render() {
     const campus = (this.props.listNode.campus || "").trim();
+
     return (
       <div className="col col-12 col-lg-4 eventItemCard">
         <div className="card card-event">
@@ -167,8 +154,8 @@ class EventItemCard extends Component {
                   </div>
                 </div>
               </div>
-              {campus && (
-                <div className="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+              {!!campus && (
+                <div className="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-center">
                   <i className="fas fa-map-marker-alt"></i>
                   <div className="d8LocationThreeCards">{campus}</div>
                 </div>
@@ -191,11 +178,10 @@ class D8Events extends Component {
     const feedData = this.props.dataFromPage.feed.split(",");
     const feedURL = feedData[0];
     const feedStyle = this.props.dataFromPage.items;
-    const feedTags = feedData.shift();
-    var feedTagsOr = [];
-    var feedTagsNot = [];
-    var feedTagsAnd = [];
-    for (var i = 0; i < feedData.length; i++) {
+    let feedTagsOr = [];
+    let feedTagsNot = [];
+    let feedTagsAnd = [];
+    for (let i = 0; i < feedData.length; i++) {
       if (feedData[i].charAt(0) == "-") {
         feedTagsNot.push(feedData[i].substring(1).toLowerCase());
       } else if (feedData[i].charAt(0) == "&") {
@@ -204,20 +190,16 @@ class D8Events extends Component {
         feedTagsOr.push(feedData[i].substring(1).toLowerCase());
       }
     }
-    console.log(feedData);
 
     axios.get(feedURL).then((response) => {
-      console.log(response.data.nodes);
-      var tempDisplayData = response.data.nodes;
-      var finalDisplayData = [];
-      //console.log(tempDisplayData);
+      let tempDisplayData = response.data.nodes;
+      let finalDisplayData = [];
 
       // Loop through feed nodes and flag them if certain tags are found
-      for (var i = 0; i < tempDisplayData.length; i++) {
+      for (let i = 0; i < tempDisplayData.length; i++) {
         tempDisplayData[i].flag = false;
         // Flag NOT tags
-        console.log(feedTagsNot);
-        for (var j = 0; j < feedTagsNot.length; j++) {
+        for (let j = 0; j < feedTagsNot.length; j++) {
           //console.log(tempDisplayData[i].node.interests);
           //console.log(feedTagsNot[j]);
           if (
@@ -243,11 +225,17 @@ class D8Events extends Component {
           ) {
             tempDisplayData[i].flag = true;
           }
+          if (
+            tempDisplayData[i].node.event_topics
+              .toLowerCase()
+              .includes(feedTagsNot[j])
+          ) {
+            tempDisplayData[i].flag = true;
+          }
         }
 
         // Flag AND tags
-        console.log(feedTagsAnd);
-        for (var k = 0; k < feedTagsAnd.length; k++) {
+        for (let k = 0; k < feedTagsAnd.length; k++) {
           if (
             tempDisplayData[i].node.interests
               .toLowerCase()
@@ -277,7 +265,7 @@ class D8Events extends Component {
   }
 
   render() {
-    var results = this.state.displayData.map((thisNode) => ({
+    const results = this.state.displayData.map((thisNode) => ({
       nid: thisNode.node.nid,
       title: thisNode.node.title,
       image_url: thisNode.node.image_url,
@@ -295,12 +283,13 @@ class D8Events extends Component {
     const {
       moreButtonLabel,
       moreButtonUrl,
+      moreButtonColor,
       title = "Events",
     } = this.props.dataFromPage;
 
-    const linkUrl =
-      moreButtonUrl || "https://dev-final-stable-release.ws.asu.edu/";
-    const buttonLabel = moreButtonLabel || "More stories and videos";
+    const buttonUrl = moreButtonUrl || "https://news.asu.edu/";
+    const buttonLabel = moreButtonLabel || "More events";
+    const buttonColor = moreButtonColor || "gold";
 
     let eventList = results;
     let containerClasses = "";
@@ -310,39 +299,39 @@ class D8Events extends Component {
     switch (displayStyle) {
       case "Three":
         eventList = results.slice(0, 3);
+        containerClasses = "threeContainer";
+        headerClasses = "p-0";
         EventComponet = EventItemDefault;
         break;
 
       case "ThreeCards":
         eventList = results.slice(0, 3);
         containerClasses = "threeCardsContainer";
-        headerClasses = "col-4";
         EventComponet = EventItemCard;
         break;
     }
 
     return (
       <div className={"container " + containerClasses}>
-        <header className={"d8EventListHeader " + headerClasses}>
+        <div className={`col d8EventListHeader ${headerClasses}`}>
           <h2>{title}</h2>
           <a
-            tabIndex={0}
-            className="btn btn-gold d8MoreButton"
+            className={`btn btn-${buttonColor} d8MoreButton`}
             role="button"
-            href={linkUrl}
+            href={buttonUrl}
           >
             {buttonLabel}
           </a>
-        </header>
-        <section>
+        </div>
+        <div className="contentContainer">
           {eventList.map((listNode, index) => {
             return (
               <Fragment key={index}>
-                <EventComponet listNode={{ ...listNode, campus: "" }} />
+                <EventComponet listNode={{ ...listNode }} />
               </Fragment>
             );
           })}
-        </section>
+        </div>
       </div>
     );
   }

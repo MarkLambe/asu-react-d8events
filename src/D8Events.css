@@ -1,39 +1,26 @@
 .threeCardsContainer {
-  
   padding: 0 !important;
+}
+
+.threeCardsContainer .contentContainer {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .d8EventListHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 8px 1rem 8px;
+  margin-bottom: 2rem;
 }
 
-.threeCardsContainer .d8EventListHeader {
-
-}
-
-@media screen and (min-width: 768px) {
-  .d8EventListHeader {
-    margin-left: -15px;
-    margin-right: -15px;
-  }
-
-  .threeCardsContainer .d8EventListHeader {
-    margin-left: 0;
-    margin-right: 0;
-  }
-}
-
-.d8MoreButton {
-  display: inline-block;
-  height: fit-content;
+.d8EventListHeader h2 {
+  margin: 0;
 }
 
 .d8EventRow {
   border: 0.05rem solid #d7d7d7;
-  margin-bottom: 1rem;
+  margin: 0 0 1rem 0;
   font-family: "Roboto", sans-serif;
 }
 
@@ -57,9 +44,9 @@
 
 .d8EventImageContainer {
   padding: 0 !important;
-  margin: 0;
   border-right: 7px solid #ffc627;
-  height: 332px;
+  height: 235px;
+  width: 235px;
 }
 
 .d8EventImageContainer a {
@@ -85,6 +72,7 @@
 }
 
 .d8StartAndEndEventCard {
+  text-align: center;
   padding-left: 24px;
   font-size: 13px;
 }
@@ -239,10 +227,23 @@
 .eventItemCard {
   margin-bottom: 20px;
 }
+@media (max-width: 1260px) {
+  .threeContainer,
+  .d8EventListHeader {
+    padding: 0 32px;
+  }
+}
 
 @media (max-width: 767px) {
+  .d8EventListHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .d8EventListHeader h2 {
+    margin-bottom: 1rem;
+  }
   .d8EventRow {
-    margin: 0 8px 1rem 8px !important;
+    margin: 0 0 1rem 0 !important;
   }
   .eventItemCard {
     padding: 0 32px !important;
