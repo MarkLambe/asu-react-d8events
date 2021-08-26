@@ -22,6 +22,7 @@
   border: 0.05rem solid #d7d7d7;
   margin: 0 0 1rem 0;
   font-family: "Roboto", sans-serif;
+  height: 237px !important;
 }
 
 .d8EventDateContainer {
@@ -252,9 +253,15 @@
 }
 
 @media (max-width: 575px) {
+  .d8EventRow {
+    height: unset !important;
+  }
   .d8EventImageContainer {
     border-bottom: 7px solid #ffc627;
     border-right: 0;
+    width: auto !important;
+    max-width: 100% !important;
+    height: auto;
   }
 }
 
