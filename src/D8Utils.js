@@ -18,6 +18,22 @@ export const validDate = (dateData, dateFormat) => {
 };
 
 //adjusted for D8
+function stringifyDate(date) {
+  const stringifiedDate = date.toLocaleString("en-US", {
+    timeZone: "UTC",
+  });
+  return stringifiedDate;
+}
+
+function standardizeTime(date) {
+  let standardizedDate = date.split("T");
+  standardizedDate =
+    standardizedDate.length > 1
+      ? standardizedDate.join("T")
+      : `${standardizedDate[0].split(":")[0]}T00:00:00Z`;
+  return standardizedDate;
+}
+
 function formatAMPM(date) {
   let hours = date.getHours();
   let minutes = date.getMinutes();
@@ -29,24 +45,12 @@ function formatAMPM(date) {
 }
 
 export const formatTime = (startTime, endTime) => {
-  const formatedStartTime = formatAMPM(
-    new Date(
-      new Date(
-        new Date(startTime).toLocaleString("en-US", {
-          timeZone: "UTC",
-        })
-      )
-    )
-  );
-  const formatedEndTime = formatAMPM(
-    new Date(
-      new Date(
-        new Date(endTime).toLocaleString("en-US", {
-          timeZone: "UTC",
-        })
-      )
-    )
-  );
+  const standardizedStartTime = standardizeTime(startTime);
+  const standardizedEndTime = standardizeTime(endTime);
+  let formatedStartTime = stringifyDate(new Date(standardizedStartTime));
+  let formatedEndTime = stringifyDate(new Date(standardizedEndTime));
+  formatedStartTime = formatAMPM(new Date(formatedStartTime));
+  formatedEndTime = formatAMPM(new Date(formatedEndTime));
   if (startTime === endTime) {
     return formatedStartTime;
   } else {
